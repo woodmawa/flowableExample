@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.flowable.org/processdef">
+  <process id="simple-script-task" name="simple script task" isExecutable="true">
+    <documentation>basic groovy script task flow</documentation>
+    <startEvent id="sid-aa4bf6d7-5455-46d2-8339-cbad69ce85a0"/>
+    <scriptTask id="sid-a1986945-4639-4a5a-b650-5f1092187feb" name="sayhello" scriptFormat="groovy">
+      <documentation><![CDATA[hello world ]]></documentation>
+      <!--<extensionElements>
+        <flowable:executionListener class="Class 1"/>
+      </extensionElements> -->
+      <script>
+        //read process variable and print it out
+        String name = execution.getVariable ('var1')
+        println "script task: hello world for $var1"</script>
+    </scriptTask>
+    <endEvent id="sid-6d1807b8-ec9c-4ffd-a41e-e7ca0b4ea7d2"/>
+    <sequenceFlow id="sid-858408e9-3d06-42d6-97d8-d5eb8fd19450" sourceRef="sid-aa4bf6d7-5455-46d2-8339-cbad69ce85a0" targetRef="sid-a1986945-4639-4a5a-b650-5f1092187feb"/>
+    <sequenceFlow id="sid-45178993-ce56-4f5e-aefd-d51894b868ca" sourceRef="sid-a1986945-4639-4a5a-b650-5f1092187feb" targetRef="sid-6d1807b8-ec9c-4ffd-a41e-e7ca0b4ea7d2"/>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_simple-system-task.bpmn20">
+    <bpmndi:BPMNPlane bpmnElement="simple-system-task" id="BPMNPlane_simple-system-task.bpmn20">
+      <bpmndi:BPMNShape id="shape-e43cde84-c8d5-4930-aae9-8931104006a2" bpmnElement="sid-aa4bf6d7-5455-46d2-8339-cbad69ce85a0">
+        <omgdc:Bounds x="-103.25" y="-35.5" width="30.0" height="30.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape-6a1c8450-a09b-4096-98b6-c12d50892b38" bpmnElement="sid-a1986945-4639-4a5a-b650-5f1092187feb">
+        <omgdc:Bounds x="-28.25" y="-60.5" width="100.0" height="80.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape-2a5133d2-fcc0-4dbe-8c94-20205a48ac7e" bpmnElement="sid-6d1807b8-ec9c-4ffd-a41e-e7ca0b4ea7d2">
+        <omgdc:Bounds x="127.25" y="-35.5" width="30.0" height="30.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge-486cb0a1-2edd-4e60-b53a-cb79c7bc3c7d" bpmnElement="sid-858408e9-3d06-42d6-97d8-d5eb8fd19450">
+        <omgdi:waypoint x="-73.25" y="-20.5"/>
+        <omgdi:waypoint x="-28.25" y="-20.5"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge-7241f523-f85b-47ea-b0ac-7d44313f4391" bpmnElement="sid-45178993-ce56-4f5e-aefd-d51894b868ca">
+        <omgdi:waypoint x="71.75" y="-20.5"/>
+        <omgdi:waypoint x="127.25" y="-20.5"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.flowable.org/processdef">
+  <process id="simple-service-delegate" name="simple service delegate" isExecutable="true">
+    <documentation><![CDATA[simple service delegate flow process to say hello
+]]></documentation>
+    <startEvent id="sid-b43dd050-0093-4188-8b48-c2c0af47b0ff"/>
+    <endEvent id="sid-a39bf10c-358e-43d7-bce9-ef3890acdcd2"/>
+    <serviceTask id="sid-b27ee89e-f18f-4472-bf0d-295148bc5f1a" flowable:exclusive="true" name="sayHello" flowable:class="com.flowable.processDelegates.SayHelloDelegate">
+      <documentation><![CDATA[say hello task ]]></documentation>
+    </serviceTask>
+    <sequenceFlow id="sid-5f2d2601-ae83-4cf8-a772-cd84fb3f512e" sourceRef="sid-b43dd050-0093-4188-8b48-c2c0af47b0ff" targetRef="sid-b27ee89e-f18f-4472-bf0d-295148bc5f1a"/>
+    <sequenceFlow id="sid-62891d77-7734-484b-a486-46f8bf20f715" sourceRef="sid-b27ee89e-f18f-4472-bf0d-295148bc5f1a" targetRef="sid-a39bf10c-358e-43d7-bce9-ef3890acdcd2"/>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_simple-service-delegate">
+    <bpmndi:BPMNPlane bpmnElement="simple-service-delegate" id="BPMNPlane_simple-service-delegate">
+      <bpmndi:BPMNShape id="shape-168d5223-f65b-4859-b943-ab12ec067971" bpmnElement="sid-b43dd050-0093-4188-8b48-c2c0af47b0ff">
+        <omgdc:Bounds x="-77.75" y="-12.5" width="30.0" height="30.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape-5530c8a3-3149-47af-adff-b7d150e1e9cb" bpmnElement="sid-a39bf10c-358e-43d7-bce9-ef3890acdcd2">
+        <omgdc:Bounds x="134.75" y="-12.5" width="30.0" height="30.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape-719db057-e850-48e1-9da0-f33a082c9464" bpmnElement="sid-b27ee89e-f18f-4472-bf0d-295148bc5f1a">
+        <omgdc:Bounds x="-5.233423" y="-36.916573" width="100.0" height="80.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge-9c181376-7177-4e5b-ab8d-a5f3240dddf8" bpmnElement="sid-5f2d2601-ae83-4cf8-a772-cd84fb3f512e">
+        <omgdi:waypoint x="-47.75" y="2.5"/>
+        <omgdi:waypoint x="-5.233423" y="3.0834274"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge-c1d48b48-eba0-4c5c-973f-64e1b788b420" bpmnElement="sid-62891d77-7734-484b-a486-46f8bf20f715">
+        <omgdi:waypoint x="94.76657" y="3.0834274"/>
+        <omgdi:waypoint x="134.75" y="2.5"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

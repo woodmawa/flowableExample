@@ -1,0 +1,46 @@
+plugins {
+    id 'groovy'
+}
+
+group = 'com.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '3.4.0'
+    implementation group: 'org.flowable', name: 'flowable-spring-boot-starter-process', version: '7.1.0'
+    implementation group: 'org.flowable', name: 'flowable-spring-boot-starter-rest-api', version: '7.0.0.M1'
+    //implementation group: 'org.flowable', name: 'flowable-idm-spring', version: '7.1.0'
+    //include groovy script engine for groovy script tasks
+    implementation group: 'org.apache.groovy', name: 'groovy-jsr223', version: '4.0.24'
+
+
+    implementation group: 'com.h2database', name: 'h2', version: '2.3.232'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '3.4.0'
+    //for actuator bean
+    //implementation group: 'org.springframework.security', name: 'spring-security-web', version: '6.4.1'
+    //implementation group: 'org.springframework.security', name: 'spring-security-config', version: '6.4.1'
+
+    implementation 'org.apache.groovy:groovy:4.0.14'
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '3.4.0'
+    testImplementation group: 'org.springframework', name: 'spring-test', version: '6.2.0'
+
+
+
+    testImplementation group: 'com.h2database', name: 'h2', version: '2.3.232'
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << ['-parameters']
+}
