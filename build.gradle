@@ -17,6 +17,10 @@ dependencies {
     //include groovy script engine for groovy script tasks
     implementation group: 'org.apache.groovy', name: 'groovy-jsr223', version: '4.0.24'
 
+    //try web clients
+    implementation group: 'org.flowable', name: 'flowable-ui-admin', version: '6.5.0', ext: 'pom'
+
+
 
     implementation group: 'com.h2database', name: 'h2', version: '2.3.232'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '3.4.0'
