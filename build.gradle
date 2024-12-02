@@ -27,10 +27,10 @@ dependencies {
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '3.4.0'
 
     //spring security config - when ready
-    //implementation group: 'org.springframework.security', name: 'spring-boot-starter-security', version: '6.4.1'
-    //implementation group: 'org.springframework.security', name: 'spring-security-web', version: '6.4.1'
-    //implementation group: 'org.springframework.security', name: 'spring-security-config', version: '6.4.1'
-    //implementation group: 'org.springframework.security', name: 'spring-security-core', version: '6.4.1'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '3.4.0'
+    implementation group: 'org.springframework.security', name: 'spring-security-web', version: '3.4.0'
+    implementation group: 'org.springframework.security', name: 'spring-security-config', version: '3.4.0'
+    implementation group: 'org.springframework.security', name: 'spring-security-core', version: '3.4.0'
 
     implementation 'org.apache.groovy:groovy:4.0.24'
 
