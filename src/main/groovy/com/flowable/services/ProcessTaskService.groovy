@@ -17,7 +17,6 @@ class ProcessTaskService {
     @Autowired
     HistoryService historyService
 
-
     /**
      * list of current tasks across all processes for this assignee
      */
