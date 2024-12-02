@@ -23,12 +23,17 @@ dependencies {
 
 
     implementation group: 'com.h2database', name: 'h2', version: '2.3.232'
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '3.4.0'
     //for actuator bean
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '3.4.0'
+
+    //spring security config - when ready
+    //implementation group: 'org.springframework.security', name: 'spring-boot-starter-security', version: '6.4.1'
     //implementation group: 'org.springframework.security', name: 'spring-security-web', version: '6.4.1'
     //implementation group: 'org.springframework.security', name: 'spring-security-config', version: '6.4.1'
+    //implementation group: 'org.springframework.security', name: 'spring-security-core', version: '6.4.1'
 
-    implementation 'org.apache.groovy:groovy:4.0.14'
+    implementation 'org.apache.groovy:groovy:4.0.24'
+
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testImplementation 'org.junit.jupiter:junit-jupiter-engine'
