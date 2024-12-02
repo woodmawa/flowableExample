@@ -24,7 +24,7 @@ class ProcessRestController {
 
     }
 
-    @GetMapping("/exists/{processKey}") public boolean checkProcessExists(@PathVariable String processKey) {
+    @GetMapping("/exists/{processKey}") public boolean checkProcessExists(@PathVariable("processKey") String processKey) {
         return processService.checkProcessExists(processKey)
     }
 
