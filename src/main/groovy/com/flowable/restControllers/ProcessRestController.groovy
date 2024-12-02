@@ -1,6 +1,9 @@
 package com.flowable.restControllers
 
 import com.flowable.services.AppProcessService
+import com.flowable.services.ProcessVariableService
+import groovy.util.logging.Slf4j
+import org.flowable.engine.runtime.ProcessInstance
 import org.flowable.task.api.Task
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
@@ -13,15 +16,33 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
+@Slf4j
 class ProcessRestController {
     @Autowired
     private AppProcessService processService
 
-    @PostMapping(value="/startProcess")
-    public void startProcessInstance(@RequestParam("name") String processName, @RequestParam("variable") String value) {
-        Optional<Map> variables = Optional.of ([var1:value])
-        processService.startProcess(processName, variables)
+    @Autowired private
+    ProcessVariableService processVariableService
 
+    @PostMapping(value="/startProcess")
+    public String startProcessInstance(@RequestParam("name") String processName, @RequestParam("variable") String value) {
+
+        if (processService.checkProcessExists(processName)) {
+            Optional<Map> variables = Optional.of([var1: value])
+            log.info ("starting $processName, with variable $value")
+            ProcessInstance pid = processService.startProcess(processName, variables)
+            def id = pid.getProcessInstanceId ()
+            def procName = pid.getProcessDefinitionName()
+            log.info ("AppProcessService: started process instance $procName, with pid ${id}")
+            id
+        } else {
+            log.error "startProcess controller action, could not find deployed process $processName "
+        }
+    }
+
+    @GetMapping("/processVariables") public Map<String, Object> getProcessVariables (@RequestParam ("pid") String processInstanceId) {
+        log.debug "reading process variables for pid $processInstanceId"
+        return processVariableService.getProcessVariablesFromFinishedProcess(processInstanceId)
     }
 
     @GetMapping("/exists/{processKey}") public boolean checkProcessExists(@PathVariable("processKey") String processKey) {

@@ -5,6 +5,7 @@ import org.flowable.engine.RepositoryService
 import org.flowable.engine.RuntimeService
 import org.flowable.engine.TaskService
 import org.flowable.engine.repository.ProcessDefinition
+import org.flowable.engine.runtime.ProcessInstance
 import org.flowable.task.api.Task
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -22,11 +23,11 @@ class AppProcessService {
     private RepositoryService repositoryService
 
     @Transactional
-    public void startProcess(String procName, Optional<Map> variables) {
+    public ProcessInstance startProcess(String procName, Optional<Map> variables) {
         Map processVariables = variables.orElse([:])
         log.info "rest API : starting process " + procName + " with variables $processVariables "
-        runtimeService.startProcessInstanceByKey(procName, processVariables)
-        log.debug ("AppProcessService: started process instance $procName")
+        ProcessInstance pid = runtimeService.startProcessInstanceByKey(procName, processVariables)
+        pid
     }
 
     //check if deployed process exists
