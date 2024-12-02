@@ -24,6 +24,8 @@ lots of places this could go - to productionise it, but shows the basic idea wit
 
 there is a demo online bpmn editor if you just want to 'play' with designing a process.  I create a bpmn file upload and deploy endpoint - but have test that.
 
+demo bpmn editor online you can play with include https://demo.bpmn.io/, others as per google searches 
+
 
 
 
