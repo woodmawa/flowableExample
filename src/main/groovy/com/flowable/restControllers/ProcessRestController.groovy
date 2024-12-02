@@ -1,6 +1,6 @@
 package com.flowable.restControllers
 
-import com.flowable.services.ProcessService
+import com.flowable.services.AppProcessService
 import org.flowable.task.api.Task
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class ProcessRestController {
     @Autowired
-    private ProcessService processService
+    private AppProcessService processService
 
     @PostMapping(value="/startProcess")
     public void startProcessInstance(@RequestParam("name") String processName, @RequestParam("variable") String value) {
