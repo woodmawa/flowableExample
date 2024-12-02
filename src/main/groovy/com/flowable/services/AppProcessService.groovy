@@ -25,7 +25,7 @@ class AppProcessService {
     @Transactional
     public ProcessInstance startProcess(String procName, Optional<Map> variables) {
         Map processVariables = variables.orElse([:])
-        log.info "rest API : starting process " + procName + " with variables $processVariables "
+        log.info "AppProcessService : starting process '$procName' with variables: $processVariables "
         ProcessInstance pid = runtimeService.startProcessInstanceByKey(procName, processVariables)
         pid
     }

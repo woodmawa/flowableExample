@@ -36,7 +36,7 @@ class ProcessRestController {
             log.info ("AppProcessService: started process instance $procName, with pid ${id}")
             id
         } else {
-            log.error "startProcess controller action, could not find deployed process $processName "
+            log.error "startProcess controller action, could not find deployed process $processName (/startProcess?name=<name>&variable=<var>)"
         }
     }
 
